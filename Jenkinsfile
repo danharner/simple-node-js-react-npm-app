@@ -4,7 +4,8 @@ pipeline {
     stage('build') {
       steps {
         //writeFile(file: 'test.txt', text: 'test-tset')
-		bat 'npm --version'
+		bat 'npm install -g yarn'
+		bat 'yarn --version'
       }
     }
 
