@@ -4,6 +4,7 @@ pipeline {
     stage('build') {
       steps {
         //writeFile(file: 'test.txt', text: 'test-tset')
+		bat 'path'
 		bat 'yarn --version'
       }
     }
