@@ -16,7 +16,6 @@ pipeline {
 	stage('test') {
       steps {
 	    bat 'yarn test --watchAll=false --coverage=true > test.log'
-        archiveArtifacts artifacts: 'test.log', fingerprint: true
       }
 	}
 	stage('deliver') {
@@ -37,5 +36,10 @@ pipeline {
 		//zip zipFile: 'ui.zip', archive: true, dir: 'build', overwrite: true
       }
 	}
+	post {
+      always {
+        archiveArtifacts artifacts: 'test.log', fingerprint: true
+      }
+    }
   }
 }
