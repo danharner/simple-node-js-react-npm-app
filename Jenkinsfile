@@ -24,7 +24,7 @@ pipeline {
           DATETIME_TAG = java.time.LocalDateTime.now()
 		  //echo "${DATETIME_TAG}"
 		  def dt = DATETIME_TAG
-		  echo dt
+		  echo dt.toString()
         }
 		//bat 'echo ${DATETIME_TAG}'
         //archiveArtifacts artifacts: 'build/*.*', fingerprint: true
