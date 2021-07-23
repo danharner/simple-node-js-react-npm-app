@@ -36,10 +36,10 @@ pipeline {
 		//zip zipFile: 'ui.zip', archive: true, dir: 'build', overwrite: true
       }
 	}
-	post {
-      always {
-        archiveArtifacts artifacts: 'test.log', fingerprint: true
-      }
+  }
+  post {
+    always {
+      archiveArtifacts artifacts: 'test.log', fingerprint: true
     }
   }
 }
