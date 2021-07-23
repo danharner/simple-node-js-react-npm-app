@@ -24,8 +24,8 @@ pipeline {
           DATETIME_TAG = java.time.LocalDateTime.now()
 		  //echo "${DATETIME_TAG}"
 		  def dt = DATETIME_TAG
+		  echo dt
         }
-		echo dt
 		//bat 'echo ${DATETIME_TAG}'
         //archiveArtifacts artifacts: 'build/*.*', fingerprint: true
 		zip zipFile: 'ui.zip', archive: true, dir: 'build', overwrite: true
