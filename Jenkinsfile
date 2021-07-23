@@ -20,9 +20,14 @@ pipeline {
       steps {
 	    script {
 		  def branch_name = scm.branches[0].name
+		  if (branch_name.contains("*/")) {
+		    branch_name = branch_name.split("\\*/")[1]
+          }
 		  echo branch_name
+		  def bn = 'main'
 		  // JOB_NAME and BUILD_NUMBER are Jenkins environment variables
-		  def zipFileName = JOB_NAME + '-main-' + BUILD_NUMBER + '-' + java.time.LocalDate.now() + '.zip'
+		  //def zipFileName = JOB_NAME + '-main-' + BUILD_NUMBER + '-' + java.time.LocalDate.now() + '.zip'
+		  def zipFileName = String.format('%s-%s-%s-%s.zip', JOB_NAME, bn, BUILD_NUMBER, java.time.LocalDate.now())
 		  zip zipFile: zipFileName, archive: true, dir: 'build'
         }
       }
