@@ -21,13 +21,14 @@ pipeline {
 	stage('deliver') {
       steps {
 	    script {
-          DATE_TAG = java.time.LocalDate.now()
-          DATETIME_TAG = java.time.LocalDateTime.now()
+          //DATE_TAG = java.time.LocalDate.now()
+          //DATETIME_TAG = java.time.LocalDateTime.now()
 		  //echo "${DATETIME_TAG}"
-		  def dt = DATE_TAG
-		  echo dt.toString()
-		  echo BUILD_TAG
-		  //zip zipFile: 'ui.zip', archive: true, dir: 'build', overwrite: true
+		  //def dt = DATE_TAG
+		  //echo dt.toString()
+		  //echo BUILD_TAG
+		  def zipFileName = BUILD_TAG + '-main-' + java.time.LocalDate.now()
+		  zip zipFile: zipFileName, archive: true, dir: 'build'
         }
 		//echo dt.toString()
 		//bat 'echo ${DATETIME_TAG}'
