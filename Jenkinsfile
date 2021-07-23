@@ -19,6 +19,8 @@ pipeline {
 	stage('deliver') {
       steps {
 	    script {
+		  def branch_name = scm.branches[0].name
+		  echo branch_name
 		  // JOB_NAME and BUILD_NUMBER are Jenkins environment variables
 		  def zipFileName = JOB_NAME + '-main-' + BUILD_NUMBER + '-' + java.time.LocalDate.now() + '.zip'
 		  zip zipFile: zipFileName, archive: true, dir: 'build'
