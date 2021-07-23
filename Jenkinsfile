@@ -27,7 +27,7 @@ pipeline {
 		  //def dt = DATE_TAG
 		  //echo dt.toString()
 		  //echo BUILD_TAG
-		  def zipFileName = JOB_NAME + '-main-' + BUILD_NUMBER + java.time.LocalDate.now()
+		  def zipFileName = JOB_NAME + '-main-' + BUILD_NUMBER + '-' + java.time.LocalDate.now() + '.zip'
 		  zip zipFile: zipFileName, archive: true, dir: 'build'
         }
 		//echo dt.toString()
