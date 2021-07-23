@@ -15,7 +15,8 @@ pipeline {
     }
 	stage('test') {
       steps {
-	    bat 'yarn test --watchAll=false'
+	    bat 'yarn test --watchAll=false --coverage=true > test.log'
+        archiveArtifacts artifacts: 'test.log', fingerprint: true
       }
 	}
 	stage('deliver') {
