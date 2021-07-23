@@ -12,9 +12,14 @@ pipeline {
 	  bat 'yarn build'
       }
     }
-	stage('Test') {
+	stage('test') {
       steps {
 	    bat 'yarn test --watchAll=false'
+      }
+	}
+	stage('deliver') {
+      steps {
+        archiveArtifacts artifacts: 'build/*.*', fingerprint: true
       }
 	}
   }
