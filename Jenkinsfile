@@ -1,6 +1,9 @@
 pipeline {
   agent any
-  stages {
+      environment {
+        CI = 'true'
+    }
+
     stage('build') {
       steps {
         //writeFile(file: 'test.txt', text: 'test-tset')
@@ -9,6 +12,12 @@ pipeline {
 		bat 'yarn build'
       }
     }
+
+	stage('Test') {
+      steps {
+	    bat 'yarn test --watchAll=false'
+      }
+	}
 
   }
 }
