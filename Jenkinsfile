@@ -22,7 +22,7 @@ pipeline {
 	    script {
           DATE_TAG = java.time.LocalDate.now()
           DATETIME_TAG = java.time.LocalDateTime.now()
-		  echo ${DATETIME_TAG}
+		  echo "${DATETIME_TAG}"
         }
 		//bat 'echo ${DATETIME_TAG}'
         //archiveArtifacts artifacts: 'build/*.*', fingerprint: true
