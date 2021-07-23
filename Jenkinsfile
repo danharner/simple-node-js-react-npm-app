@@ -19,7 +19,8 @@ pipeline {
 	}
 	stage('deliver') {
       steps {
-        archiveArtifacts artifacts: 'build/*.*', fingerprint: true
+        //archiveArtifacts artifacts: 'build/*.*', fingerprint: true
+		zip zipFile: 'ui.zip', archive: true, dir: 'build', overwrite: true
       }
 	}
   }
